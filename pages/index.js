@@ -1,11 +1,6 @@
 import Head from 'next/head'
-import Image from 'next/image'
-import { Inter } from 'next/font/google'
-import styles from '@/styles/Home.module.css'
-import ExpenseItem from '@/components/Expenses/ExpenseItem'
 import Expenses from '@/components/Expenses/Expenses'
-
-const inter = Inter({ subsets: ['latin'] })
+import NewExpense from '@/components/NewExpense/NewExpense'
 
 export default function Home() {
   const expenses = [
@@ -34,6 +29,12 @@ export default function Home() {
       date: new Date(2021, 5, 12),
     },
   ]
+
+  const addExpenseHandler = (expense) => {
+    console.log('In App.js')
+    console.log(expense)
+  }
+
   return (
     <>
       <Head>
@@ -44,7 +45,7 @@ export default function Home() {
       </Head>
 
       <div>
-        <h2>Let's get started!</h2>
+        <NewExpense onAddExpense={addExpenseHandler} />
 
         <Expenses items={expenses} />
       </div>
